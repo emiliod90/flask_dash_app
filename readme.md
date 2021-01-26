@@ -105,3 +105,13 @@ Add this to Azure startup.sh file and run the Azure CLI command or add it via Co
 # add startup.sh to App service via CLI
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
 az webapp config set --resource-group PortfolioApp --name devdashapp --startup-file startup.sh
+
+# add multiple 
+git remote add origin https://github.com/emiliod90/flask_dash_app.git
+git remote set-url --add --push origin https://github.com/emiliod90/flask_dash_app.git
+
+<!-- git remote add origin https://emydesouza@dev.azure.com/emydesouza/Flask%20Dash%20App/_git/Flask%20Dash%20App -->
+git remote set-url --add --push origin https://emydesouza@dev.azure.com/emydesouza/Flask%20Dash%20App/_git/Flask%20Dash%20App
+
+git branch -M main
+git push -u origin main

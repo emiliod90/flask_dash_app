@@ -13,4 +13,8 @@ def init_app():
         # Import parts of our core Flask app
         from . import routes
 
+        # import dash application
+        from .plotlydash.dashboard1 import init_dashboard
+        app = init_dashboard(app)
+
         return app

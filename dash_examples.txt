@@ -1,0 +1,19 @@
+
+Correlation Matrix
+
+
+Snowflake diagram
+
+Sankey Diagram - asset allocation
+
+Pie chart - contributors to returns
+Pie chart - current portfolio mix
+Area chart - Historical portfolio value
+Pie chart - Debt to equity
+
+Box plot - Valuation	
+
+
+Bar chart Dividends tracker 
+
+Bar - Metrics - Total Return, Capital Gain, Dividend Income, (Tax for pensions) 

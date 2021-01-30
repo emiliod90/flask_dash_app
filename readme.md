@@ -26,6 +26,7 @@ poetry install
 ### Use poetry add, poetry remove
 poetry add flask
 poetry add dash
+poetry add requests
 
 Alternatively run poetry install after adding the dependencies into the pyproject.toml file
 

@@ -6,8 +6,7 @@ from dash.dependencies import Input, Output
 import plotly.graph_objects as go
 import csv
 
-
-ticker_url = './data/etf/uk/agbp.csv'
+ticker_url = '../../data/etf/uk/agbp.csv'
 
 
 def parse_etf_data(ticker_url):

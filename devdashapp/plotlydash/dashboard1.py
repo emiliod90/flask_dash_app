@@ -5,30 +5,37 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 import plotly.graph_objects as go
 import csv
+import requests
 
-ticker_url = '../../data/etf/uk/agbp.csv'
+
+ticker_url = 'https://storage.googleapis.com/emilio-public-bucket/etf_data/uk/eqqq.csv'
 
 
 def parse_etf_data(ticker_url):
-    # Normally this will point to an API endpoint
-    # Instead it points to a Local csv file
-
     # First section of code specific for demo
-    with open(ticker_url, "r") as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter=',')
-        data = list(csv_reader)
+    with requests.Session() as s:
+        download = s.get(ticker_url)
+        decoded_content = download.content.decode('utf-8')
+        cr = csv.reader(decoded_content.splitlines(), delimiter=',')
+        data = list(cr)
         timestamp = []
+        o = []
+        h = []
+        l = []
         ac = []
         vol = []
         for row in data:
             timestamp.append(row[0])
+            o.append(row[1])
+            h.append(row[2])
+            l.append(row[3])
             ac.append(row[5])
             vol.append(row[6])
 
-        return timestamp, ac, vol
+        return timestamp[1:], o[1:], h[1:], l[1:], ac[1:], vol[1:]
 
 
-t, c, v = parse_etf_data(ticker_url)
+t, o, h, l, c, v = parse_etf_data(ticker_url)
 
 
 def init_dashboard(server):
@@ -69,18 +76,18 @@ def init_dashboard(server):
                 }
             ),
             dcc.Graph(
-                id='close-line',
+                id='candlestick',
                 figure={
                     'data': [
-                        {'x': t, 'y': c, 'type': 'line'},
+                        {'x': t, 'open': o, 'high': h, 'low': l, 'close': c, 'type': 'candlestick'},
 
                     ],
                     'layout': {
-                        'title': '100 Day Close'
+                        'title': '100 Day Candlestick'
                     }
                 }
             ),
-            ],
+        ],
         id='dash-container')
 
     return dash_app.server

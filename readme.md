@@ -1,5 +1,10 @@
 # Flask + Dash Application
 
+See this for style: https://github.com/jimmybow/Flask_template_auth_with_Dash
+
+Inspired by https://hackersandslackers.com/plotly-dash-with-flask/
+https://mattupstate.com/blog/how-i-structure-my-flask-applications/ 
+
 ## Poetry for Package Management
 
 Any Python file is a module, its name being the file's base 
@@ -18,6 +23,9 @@ conda install -c conda-forge poetry
 poetry new [package-name]
 poetry new devdashapp
 Or run poetry init
+
+
+DONT USE DASH IN FILE NAMES for py modules
 
 ### install first round
 poetry install

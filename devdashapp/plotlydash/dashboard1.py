@@ -10,7 +10,6 @@ import requests
 
 ticker_url = 'https://storage.googleapis.com/emilio-public-bucket/etf_data/uk/eqqq.csv'
 
-
 def parse_etf_data(ticker_url):
     # First section of code specific for demo
     with requests.Session() as s:
@@ -79,11 +78,13 @@ def init_dashboard(server):
                 id='candlestick',
                 figure={
                     'data': [
-                        {'x': t, 'open': o, 'high': h, 'low': l, 'close': c, 'type': 'candlestick'},
+                        {'x': t, 'open': o, 'high': h, 'low': l,
+                            'close': c, 'type': 'candlestick'},
 
                     ],
                     'layout': {
-                        'title': '100 Day Candlestick'
+                        'title': '100 Day Candlestick',
+                        'xaxis': {'rangeslider': {'visible': False}},
                     }
                 }
             ),
